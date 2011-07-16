@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+    <Realm>
+        <RealmName>eXertius</RealmName>
+        <RealmList>logon.exertius.net</RealmList>
+    </Realm>
+    <Realm>
+        <RealmName>eXertius - WCell</RealmName>
+        <RealmList>wcell.exertius.net</RealmList>
+    </Realm>
+</Config>
+

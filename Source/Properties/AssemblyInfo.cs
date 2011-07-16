@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Source")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("eXLauncher")]
+[assembly: AssemblyDescription("WoW-Launcher that supports customization and switching between different realms.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Source")]
+[assembly: AssemblyCompany("eXertius")]
+[assembly: AssemblyProduct("eXLauncher")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
