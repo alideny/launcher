@@ -6,8 +6,16 @@
                 <xs:element maxOccurs="unbounded" name="Realm">
                     <xs:complexType>
                         <xs:sequence>
+                            <xs:element name="RealmId" type="xs:int" />
                             <xs:element name="RealmName" type="xs:string" />
                             <xs:element name="RealmList" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="1" name="Defaults">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="RealmDefaultId" type="xs:int" />
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

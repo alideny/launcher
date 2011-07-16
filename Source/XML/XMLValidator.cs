@@ -18,11 +18,10 @@ namespace eXLauncher.XML
         /// Set up the XML Validator class.
         /// </summary>
         /// <param name="configFileName">Location of the Config File</param>
-        /// <param name="configSchemaFile">Location fo the Config File Schema</param>
         public XMLValidator(string configFileName)
         { 
             m_ConfigFileName = configFileName;
-            m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Config.xsd");
+            m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Config.xsd");
             m_objXmlSchemaSet = new XmlSchemaSet();
 
             m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed))); 

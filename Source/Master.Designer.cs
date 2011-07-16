@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chosenRealm = new System.Windows.Forms.ComboBox();
+            this.chosenRealm = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // chosenRealm
             // 
             this.chosenRealm.FormattingEnabled = true;
-            this.chosenRealm.Location = new System.Drawing.Point(540, 452);
+            this.chosenRealm.Location = new System.Drawing.Point(587, 412);
             this.chosenRealm.Name = "chosenRealm";
-            this.chosenRealm.Size = new System.Drawing.Size(121, 21);
+            this.chosenRealm.Size = new System.Drawing.Size(120, 69);
             this.chosenRealm.TabIndex = 0;
             // 
             // Master
@@ -54,7 +54,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox chosenRealm;
+        private System.Windows.Forms.ListBox chosenRealm;
+
     }
 }
 
