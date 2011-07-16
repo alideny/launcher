@@ -6,6 +6,7 @@ using System.Xml;
 using System.Windows.Forms;
 
 using eXLauncher;
+using eXLauncher.Includes;
 
 namespace eXLauncher.XML
 {
@@ -32,7 +33,7 @@ namespace eXLauncher.XML
         /// <summary>
         /// 
         /// </summary>
-        public void LoadRealmOptions()
+        public void LoadFromConfig()
         {
             try
             {
@@ -73,6 +74,11 @@ namespace eXLauncher.XML
                                 case "RealmDefaultId":
                                     defaultRealm = Int32.Parse(objXmlTextReader.Value);
                                     break;
+
+                                // Core Config
+                                case "WoWLocation":
+                                    Config.WoWLocation = objXmlTextReader.Value;
+                                    break;
                             }
                             break;
                     }
@@ -90,6 +96,7 @@ namespace eXLauncher.XML
             ListBox box = (ListBox)m_masterForm.Controls["chosenRealm"];
             foreach (KeyValuePair<int, KeyValuePair<String, String>> kvp in realmOptions)
                 box.Items.Add(kvp.Value.Key);
+
             box.Items.RemoveAt(0); // Remove the empty choice.
             box.SelectedItem = realmOptions[defaultRealm].Key;
         }

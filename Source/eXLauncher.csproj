@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Includes\Config.cs">
+      <DependentUpon>Config.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Master.cs">
       <SubType>Form</SubType>
     </Compile>

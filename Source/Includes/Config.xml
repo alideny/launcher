@@ -13,5 +13,8 @@
     <Defaults>
         <RealmDefaultId>1</RealmDefaultId>
     </Defaults>
+    <CoreConfig>
+        <WoWLocation>C:/Path/To/WoW.exe</WoWLocation>
+    </CoreConfig>
 </Config>
 

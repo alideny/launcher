@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using eXLauncher.XML;
+using eXLauncher.Includes;
 
 namespace eXLauncher
 {
@@ -20,8 +21,9 @@ namespace eXLauncher
 
         private void Master_Load(object sender, EventArgs e)
         {
-            XMLController loader = new XMLController(this);
-            loader.LoadRealmOptions();
+            ConfigController controller = new ConfigController(this);
+            controller.LoadAllValues();
+            controller.ValidateWoWLocation();
         }
     }
 }
