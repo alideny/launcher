@@ -19,10 +19,12 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element maxOccurs="1" name="CoreConfig">
+                <xs:element maxOccurs="unbounded" name="WoWDirectory">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="WoWLocation" type="xs:string" />
+                            <xs:element name="Client" type="xs:string" />
+                            <xs:element name="FileLocation" type="xs:string" />
+                            <xs:element name="Locale" type="xs:string" />
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

@@ -12,7 +12,17 @@ namespace eXLauncher.Includes
 {
     public static class Config
     {
-        public static string WoWLocation;
+        /// <summary>
+        /// Contains all possible realmlist options.
+        ///                ID               Name    Realmlist
+        /// </summary>
+        public static Dictionary<int, KeyValuePair<String, String>> realmOptions;
+
+        /// <summary>
+        /// Contains all WoW directories. (One per Client)
+        ///                Client               Locale   Location
+        /// </summary>
+        public static Dictionary<String, KeyValuePair<String, String>> wowDirectories;
     }
 
     /// <summary>
@@ -20,6 +30,7 @@ namespace eXLauncher.Includes
     /// </summary>
     public class ConfigController
     {
+
         private Form _masterForm;
         private XMLController loader;
         public ConfigController(Master form)
@@ -31,36 +42,18 @@ namespace eXLauncher.Includes
         {
             loader = new XMLController(_masterForm);
             loader.LoadFromConfig();
+            Config.realmOptions = loader.realmOptions;
+            Config.wowDirectories = loader.wowDirectories;
         }
 
         public void ValidateWoWLocation()
         {
-            // TODO Make sure the file is actually a WoW client.
-
-            // If launcher is in the same directory, no need to search further
-            if (File.Exists("./WoW.exe"))
-                return;
-
-            if (Config.WoWLocation == "C:/Path/To/WoW.exe")
+            // TODO Further check to make sure the location is correct.
+            foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in Config.wowDirectories)
             {
-                ForceNewWoWLocation();
-                return;
+                if (kvp.Key == "0.0.0")
+                    Config.wowDirectories.Remove(kvp.Key);
             }
-            if (!Config.WoWLocation.EndsWith(".exe", true, null))
-            {
-                ForceNewWoWLocation();
-                return;
-            }
-
-            if (File.Exists(Config.WoWLocation))
-                return;
-
-            ForceNewWoWLocation();
-        }
-        
-        public void ForceNewWoWLocation()
-        {
-
         }
     }
 }
