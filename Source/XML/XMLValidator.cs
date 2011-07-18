@@ -7,6 +7,9 @@ using System.Reflection;
 
 namespace eXLauncher.XML
 {
+    /// <summary>
+    /// Validates the XML file.
+    /// </summary>
     public class XMLValidator
     {
         private string m_ConfigFileName;

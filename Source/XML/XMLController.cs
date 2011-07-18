@@ -10,6 +10,9 @@ using eXLauncher.Includes;
 
 namespace eXLauncher.XML
 {
+    /// <summary>
+    /// Handles all communications between the program and XML files.
+    /// </summary>
     public class XMLController
     {
         /// <summary>
@@ -28,7 +31,7 @@ namespace eXLauncher.XML
         private int defaultRealm;
         
         /// <summary>
-        /// Controls the Config file.
+        /// Controls the Config file and makes sure it is in correct format.
         /// </summary>
         /// <param name="masterForm">Master form for accessing controls.</param>
         public XMLController(Form masterForm)
@@ -37,8 +40,9 @@ namespace eXLauncher.XML
             XMLValidator validator = new XMLValidator("Config.xml");
             validator.ValidateXMLFile();
         }
+
         /// <summary>
-        /// 
+        /// Load all values from the config.
         /// </summary>
         public void LoadFromConfig()
         {

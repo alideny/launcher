@@ -30,7 +30,6 @@ namespace eXLauncher.Includes
     /// </summary>
     public class ConfigController
     {
-
         private Form _masterForm;
         private XMLController loader;
         public ConfigController(Master form)
@@ -38,6 +37,9 @@ namespace eXLauncher.Includes
             _masterForm = form;
         }
 
+        /// <summary>
+        /// Load all values from the config.
+        /// </summary>
         public void LoadAllValues()
         {
             loader = new XMLController(_masterForm);
@@ -46,14 +48,43 @@ namespace eXLauncher.Includes
             Config.wowDirectories = loader.wowDirectories;
         }
 
+        /// <summary>
+        /// Make sure all WoW locations are valid, and if none exist, force the user to add one.
+        /// </summary>
         public void ValidateWoWLocation()
         {
-            // TODO Further check to make sure the location is correct.
-            foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in Config.wowDirectories)
+            bool forceAdd = false;
+            try
             {
-                if (kvp.Key == "0.0.0")
-                    Config.wowDirectories.Remove(kvp.Key);
+                foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in Config.wowDirectories)
+                {
+                    if (kvp.Key == "0.0.0")
+                        Config.wowDirectories.Remove(kvp.Key);
+
+                    if (kvp.Value.Key.Substring(0, 2) != "en")
+                        throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.Key, kvp.Value.Key));
+
+                    if (!File.Exists(String.Format("{0}/{1}/realmlist.wtf", kvp.Value.Value.Substring(0, kvp.Value.Value.Length - 8), kvp.Value.Key)))
+                        throw new Exception(String.Format("WoW Client ID: {0} has invalid WoW.exe file directory. The realmlist file could not be found!", kvp.Key));
+                }
+
+                if (Config.wowDirectories.Count < 1)
+                {
+                    forceAdd = true;
+                    throw new Exception("You must have at least one WoW directory! Please add one now!");
+                }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                if (forceAdd)
+                    AddWoWLocation();
+            }
+        }
+
+        public void AddWoWLocation()
+        {
+
         }
     }
 }
