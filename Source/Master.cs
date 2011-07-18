@@ -40,8 +40,8 @@ namespace eXLauncher
 
         private void btnStartWoW_Click(object sender, EventArgs e)
         {
-            // TODO Launch matching WoW client.
-
+            var realmInfo = Config.realmOptions[(String)chosenRealm.SelectedItem];
+            var wowClient = Config.wowDirectories[realmInfo.Value];
         }
     }
 }

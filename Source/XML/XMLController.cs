@@ -17,9 +17,9 @@ namespace eXLauncher.XML
     {
         /// <summary>
         /// Contains all possible realmlist options.
-        ///                Name   Realmlist
+        ///                Name               Realmlist  Client
         /// </summary>
-        public  Dictionary<String, String> realmOptions = new Dictionary<String, String>();
+        public  Dictionary<String, KeyValuePair<String, String>> realmOptions = new Dictionary<String, KeyValuePair<String, String>>();
 
         /// <summary>
         /// Contains all WoW directories. (One per Client)
@@ -66,8 +66,9 @@ namespace eXLauncher.XML
                             {
                                 if (realmOptions.ContainsKey(name))
                                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                                if (name != "")
-                                    realmOptions.Add(name, realmlist);
+                                if (name != "" && client != "0.0.0")
+                                    realmOptions.Add(name, new KeyValuePair<String, String>(realmlist, client));
+                                client = "0.0.0";
                                 name = "";
                                 realmlist = "";
                             }
@@ -92,6 +93,7 @@ namespace eXLauncher.XML
                                 case "RealmList":
                                     realmlist = objXmlTextReader.Value;
                                     break;
+                                case "RealmClient":
 
                                 // Defaults
                                 case "RealmDefaultName":
@@ -114,7 +116,7 @@ namespace eXLauncher.XML
                 }
                 if (realmOptions.ContainsKey(name))
                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                realmOptions.Add(name, realmlist);
+                realmOptions.Add(name, new KeyValuePair<String, String>(realmlist, client));
 
                 if (wowDirectories.ContainsKey(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
@@ -129,7 +131,7 @@ namespace eXLauncher.XML
 
             // Realm Options
             ListBox box = (ListBox)m_masterForm.Controls["chosenRealm"];
-            foreach (KeyValuePair<String, String> kvp in realmOptions)
+            foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in realmOptions)
                 box.Items.Add(kvp.Key);
 
             box.SelectedItem = defaultRealm;

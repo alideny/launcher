@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
     <Realm>
-        <RealmId>1</RealmId>
         <RealmName>eXertius</RealmName>
         <RealmList>logon.exertius.net</RealmList>
+        <RealmClient>3.3.5a</RealmClient>
     </Realm>
     <Realm>
-        <RealmId>2</RealmId>
         <RealmName>eXertius - WCell</RealmName>
         <RealmList>wcell.exertius.net</RealmList>
+        <RealmClient>3.3.5a</RealmClient>
     </Realm>
     <Defaults>
         <RealmDefaultId>1</RealmDefaultId>

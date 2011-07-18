@@ -14,9 +14,9 @@ namespace eXLauncher.Includes
     {
         /// <summary>
         /// Contains all possible realmlist options.
-        ///                      Name   Realmlist
+        ///                      Name               Realmlist  Client
         /// </summary>
-        public static Dictionary<String, String> realmOptions;
+        public static Dictionary<String, KeyValuePair<String, String>> realmOptions;
 
         /// <summary>
         /// Contains all WoW directories. (One per Client)
