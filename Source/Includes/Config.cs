@@ -14,13 +14,17 @@ namespace eXLauncher.Includes
     {
         /// <summary>
         /// Contains all possible realmlist options.
-        ///                      Name               Realmlist  Client
+        /// Key: Name
+        /// Value.Key: Realmlist
+        /// Value.Value: Client
         /// </summary>
         public static Dictionary<String, KeyValuePair<String, String>> realmOptions;
 
         /// <summary>
         /// Contains all WoW directories. (One per Client)
-        ///                Client               Locale   Location
+        /// Key: Client
+        /// Value.Key: Locale
+        /// Value.Value: Location
         /// </summary>
         public static Dictionary<String, KeyValuePair<String, String>> wowDirectories;
     }
