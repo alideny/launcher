@@ -37,5 +37,11 @@ namespace eXLauncher
             controller.LoadAllValues();
             controller.ValidateWoWLocation();
         }
+
+        private void btnStartWoW_Click(object sender, EventArgs e)
+        {
+            // TODO Launch matching WoW client.
+
+        }
     }
 }
