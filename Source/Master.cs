@@ -41,6 +41,11 @@ namespace eXLauncher
             controller.ValidateWoWLocation();
         }
 
+        /// <summary>
+        /// Called when a player wants to start the WoW Client.
+        /// </summary>
+        /// <param name="sender">Not Used</param>
+        /// <param name="eArgs">Not Used</param>
         private void btnStartWoW_Click(object sender, EventArgs eArgs)
         {
             try
@@ -59,6 +64,11 @@ namespace eXLauncher
             }
         }
 
+        /// <summary>
+        /// Set up the realmlist.wtf file and start WoW.
+        /// </summary>
+        /// <param name="WoWInfo">Information containing WoW directory and locale.</param>
+        /// <param name="realmlist">What the realmlist file should be changed to.</param>
         private void LaunchWoWClient(KeyValuePair<String, String> WoWInfo, String realmlist)
         {
             StreamReader reader = null;
@@ -91,6 +101,10 @@ namespace eXLauncher
             }
         }
 
+        /// <summary>
+        /// Start the WoW client and close the launcher.
+        /// </summary>
+        /// <param name="filename">Location of WoW client to execute.</param>
         private void StartWoWProcess(String filename)
         {
             Process.Start(filename);
