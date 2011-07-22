@@ -104,7 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Includes\Config.xml" />
+    <Content Include="Includes\Config.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

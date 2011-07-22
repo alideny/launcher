@@ -60,11 +60,10 @@ namespace eXLauncher.Includes
             bool forceAdd = false;
             try
             {
+                try { Config.wowDirectories.Remove("0.0.0"); }
+                catch (Exception) { }
                 foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in Config.wowDirectories)
                 {
-                    if (kvp.Key == "0.0.0")
-                        Config.wowDirectories.Remove(kvp.Key);
-
                     if (kvp.Value.Key.Substring(0, 2) != "en")
                         throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.Key, kvp.Value.Key));
 

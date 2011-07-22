@@ -13,10 +13,5 @@
     <Defaults>
         <RealmDefaultId>1</RealmDefaultId>
     </Defaults>
-    <WoWDirectory>
-        <Client>3.3.5a</Client>
-        <FileLocation>C:/Path/To/WoW.exe</FileLocation>
-        <Locale>enUS</Locale>
-    </WoWDirectory>
 </Config>
 

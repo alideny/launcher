@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Source", "Source\eXLauncher.csproj", "{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eXLauncher", "Source\eXLauncher.csproj", "{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
