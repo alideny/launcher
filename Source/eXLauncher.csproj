@@ -64,9 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Includes\Array3.cs" />
     <Compile Include="Includes\Config.cs">
       <DependentUpon>Config.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Includes\Vector3.cs" />
     <Compile Include="Master.cs">
       <SubType>Form</SubType>
     </Compile>
