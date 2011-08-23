@@ -130,11 +130,12 @@ namespace eXLauncher.XML
             }
 
             // Realm Options
-            ListBox box = (ListBox)m_masterForm.Controls["chosenRealm"];
+            ListView box = (ListView)m_masterForm.Controls["chosenRealm"];
             foreach (Vector3<String> kvp in realmOptions)
-                box.Items.Add(kvp.X);
+                box.Items.Add(new ListViewItem(kvp.X));
 
-            box.SelectedItem = defaultRealm;
+            box.Items[defaultRealm].Selected = true;
+            box.Select();
             // End Realm Options
         }
 

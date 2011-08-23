@@ -50,7 +50,7 @@ namespace eXLauncher
         {
             try
             {
-                var realmInfo = Config.realmOptions[(String)chosenRealm.SelectedItem] as Vector3<String>;
+                var realmInfo = Config.realmOptions[(String)chosenRealm.SelectedItems[0].Text] as Vector3<String>;
                 if (realmInfo == null)
                 {
                     throw new Exception("realmInfo is null!");

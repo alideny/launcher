@@ -64,7 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Includes\Array3.cs" />
+    <Compile Include="Includes\SArray3.cs" />
     <Compile Include="Includes\Config.cs">
       <DependentUpon>Config.xsd</DependentUpon>
     </Compile>
@@ -109,6 +109,8 @@
     <Content Include="Includes\Config.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\Launcherx2_realms.png" />
+    <None Include="Resources\Launcherx2.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
