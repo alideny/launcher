@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace eXLauncher.Includes
         /// Value.Key: Realmlist
         /// Value.Value: Client
         /// </summary>
-        public static Dictionary<String, KeyValuePair<String, String>> realmOptions;
+        public static SArray3 realmOptions;
 
         /// <summary>
         /// Contains all WoW directories. (One per Client)
@@ -26,7 +27,7 @@ namespace eXLauncher.Includes
         /// Value.Key: Locale
         /// Value.Value: Location
         /// </summary>
-        public static Dictionary<String, KeyValuePair<String, String>> wowDirectories;
+        public static SArray3 wowDirectories;
     }
 
     /// <summary>
@@ -62,13 +63,13 @@ namespace eXLauncher.Includes
             {
                 try { Config.wowDirectories.Remove("0.0.0"); }
                 catch (Exception) { }
-                foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in Config.wowDirectories)
+                foreach (Vector3<String> kvp in Config.wowDirectories)
                 {
-                    if (kvp.Value.Key.Substring(0, 2) != "en")
-                        throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.Key, kvp.Value.Key));
+                    if (kvp.Y.Substring(0, 2) != "en")
+                        throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.X, kvp.Y));
 
-                    if (!File.Exists(String.Format("{0}/{1}/realmlist.wtf", kvp.Value.Value.Substring(0, kvp.Value.Value.Length - 8), kvp.Value.Key)))
-                        throw new Exception(String.Format("WoW Client ID: {0} has invalid WoW.exe file directory. The realmlist file could not be found!", kvp.Key));
+                    if (!File.Exists(String.Format("{0}/{1}/realmlist.wtf", kvp.Z.Substring(0, kvp.Z.Length - 8), kvp.Y)))
+                        throw new Exception(String.Format("WoW Client ID: {0} has invalid WoW.exe file directory. The realmlist file could not be found!", kvp.X));
                 }
 
                 if (Config.wowDirectories.Count < 1)

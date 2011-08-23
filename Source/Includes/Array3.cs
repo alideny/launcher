@@ -1,81 +1,99 @@
 ﻿using System;
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
-namespace eXLauncher
+namespace eXLauncher.Includes
 {
-    public class Array3<T> : IEnumerable<T>
+    public class SArray3 : IEnumerable
     {
-        public void Add(T item1, T item2, T item3)
+        private ArrayList contents;
+
+        public SArray3()
         {
-            if (contents == null)
-                contents = new ArrayList();
-            Vector3<T> vector = new Vector3<T>();
-            vector.X = item1;
-            vector.Y = item2;
-            vector.Z = item3;
+            contents = new ArrayList();
+        }
+
+        public void Add(String item1, String item2, String item3)
+        {
+            Vector3<String> vector = new Vector3<String>();
+            vector.Create(item1, item2, item3);
             contents.Add(vector);
         }
-
-        public void Remove(T item)
+        public void Remove(String value)
         {
-            int marked = -1;
-            for (int i = 0; i < contents.Count; i++)
+            Vector3<String> marked = null;
+            foreach (Vector3<String> vector in contents)
             {
-                var vector = contents[i] as Vector3<T>;
-                if (vector != null)
-                {
-                    if (object.Equals(vector.X, item))
-                        marked = i;
-                }
+                if (vector.X.Equals(value))
+                    marked = vector;
             }
-            if (marked != -1)
-                contents.RemoveAt(marked);
+
+            if (marked != null)
+                contents.Remove(marked);
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public int Count
+        {
+            get
+            {
+                return contents.Count;
+            }
+        }
+
+        public bool ContainsX(String item)
+        {
+            foreach (Vector3<String> vector in contents)
+            {
+                if (vector.X.Equals(item))
+                    return true;
+            }
+            return false;
+        }
+
+        public Vector3<String> this[String value]
+        {
+            get
+            {
+                foreach (Vector3<String> vector in contents)
+                {
+                    if (vector.X.Equals(value))
+                        return vector;
+                }
+                return null;
+            }
+        }
+
+        public IEnumerator GetEnumerator()
         {
             return new Iterator(this);
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
-        public class Iterator : IEnumerator<T>
+        public class Iterator : IEnumerator
         {
-            public Iterator(Array3<T> array3)
+            public Iterator(SArray3 _array)
             {
+                array = _array;
                 Monitor.Enter(array.contents.SyncRoot);
-                array = array3;
             }
-
             public void Reset()
             {
                 current = -1;
             }
 
-            public bool MoveNext()
-            {
-                ++current;
-                if (current < array.contents.Count)
-                    return true;
-                else
-                    return false;
-            }
-
-            public T Current
+            public Vector3<String> Current
             {
                 get
                 {
-                    return (T)array.contents[current];
+                    return (Vector3<String>)array.contents[current];
                 }
             }
-
             object IEnumerator.Current
             {
                 get
@@ -84,14 +102,21 @@ namespace eXLauncher
                 }
             }
 
+            public bool MoveNext()
+            {
+                if (current < array.contents.Count)
+                    return true;
+                else
+                    return false;
+            }
+
             public void Dispose()
             {
                 Monitor.Exit(array.contents.SyncRoot);
             }
-            private int current;
-            private Array3<T> array;
-        }
 
-        private ArrayList contents;
+            private SArray3 array;
+            private int current = -1;
+        }
     }
 }

@@ -19,13 +19,13 @@ namespace eXLauncher.XML
         /// Contains all possible realmlist options.
         ///                Name               Realmlist  Client
         /// </summary>
-        public  Dictionary<String, KeyValuePair<String, String>> realmOptions = new Dictionary<String, KeyValuePair<String, String>>();
+        public  SArray3 realmOptions = new SArray3();
 
         /// <summary>
         /// Contains all WoW directories. (One per Client)
         ///                Client               Locale   Location
         /// </summary>
-        public  Dictionary<String, KeyValuePair<String,  String>> wowDirectories = new Dictionary<String, KeyValuePair<String, String>>();
+        public  SArray3 wowDirectories = new SArray3();
 
         private Form m_masterForm;
         private String defaultRealm;
@@ -64,20 +64,20 @@ namespace eXLauncher.XML
                             element = objXmlTextReader.Name;
                             if (String.Compare(element, "Realm") == 0)
                             {
-                                if (realmOptions.ContainsKey(name))
+                                if (realmOptions.ContainsX(name))
                                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
                                 if (name != "" && client != "0.0.0")
-                                    realmOptions.Add(name, new KeyValuePair<String, String>(realmlist, client));
+                                    realmOptions.Add(name, realmlist, client);
                                 client = "0.0.0";
                                 name = "";
                                 realmlist = "";
                             }
                             if (String.Compare(element, "WoWDirectory") == 0)
                             {
-                                if (wowDirectories.ContainsKey(client))
+                                if (wowDirectories.ContainsX(client))
                                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
                                 if (client != "0.0.0")
-                                    wowDirectories.Add(client, new KeyValuePair<String, String>(locale, fileLocation));
+                                    wowDirectories.Add(client, locale, fileLocation);
                                 client = "0.0.0";
                                 fileLocation = "";
                                 locale = "";
@@ -114,13 +114,13 @@ namespace eXLauncher.XML
                             break;
                     }
                 }
-                if (realmOptions.ContainsKey(name))
+                if (realmOptions.ContainsX(name))
                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                realmOptions.Add(name, new KeyValuePair<String, String>(realmlist, client));
+                realmOptions.Add(name, realmlist, client);
 
-                if (wowDirectories.ContainsKey(client))
+                if (wowDirectories.ContainsX(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
-                wowDirectories.Add(client, new KeyValuePair<String, String>(locale, fileLocation));
+                wowDirectories.Add(client, locale, fileLocation);
                     
             }
             catch (Exception ex)
@@ -131,8 +131,8 @@ namespace eXLauncher.XML
 
             // Realm Options
             ListBox box = (ListBox)m_masterForm.Controls["chosenRealm"];
-            foreach (KeyValuePair<String, KeyValuePair<String, String>> kvp in realmOptions)
-                box.Items.Add(kvp.Key);
+            foreach (Vector3<String> kvp in realmOptions)
+                box.Items.Add(kvp.X);
 
             box.SelectedItem = defaultRealm;
             // End Realm Options

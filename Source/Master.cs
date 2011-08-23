@@ -50,13 +50,18 @@ namespace eXLauncher
         {
             try
             {
-                var realmInfo = Config.realmOptions[(String)chosenRealm.SelectedItem];
-                if (!Config.wowDirectories.ContainsKey(realmInfo.Value))
+                var realmInfo = Config.realmOptions[(String)chosenRealm.SelectedItem] as Vector3<String>;
+                if (realmInfo == null)
                 {
-                    throw new Exception(String.Format("You do not have a WoW client for the client {0}! Please add one before choosing this realm!", realmInfo.Value));
+                    throw new Exception("realmInfo is null!");
                 }
-                var wowClient = Config.wowDirectories[realmInfo.Value];
-                LaunchWoWClient(wowClient, realmInfo.Key);
+
+                if (!Config.wowDirectories.ContainsX(realmInfo.Y))
+                {
+                    throw new Exception(String.Format("You do not have a WoW client for the client {0}! Please add one before choosing this realm!", realmInfo.Y));
+                }
+                var wowClient = Config.wowDirectories[realmInfo.Y] as Vector3<String>;
+                LaunchWoWClient(wowClient, realmInfo.X);
             }
             catch (Exception e)
             {
@@ -69,13 +74,13 @@ namespace eXLauncher
         /// </summary>
         /// <param name="WoWInfo">Information containing WoW directory and locale.</param>
         /// <param name="realmlist">What the realmlist file should be changed to.</param>
-        private void LaunchWoWClient(KeyValuePair<String, String> WoWInfo, String realmlist)
+        private void LaunchWoWClient(Vector3<String> WoWInfo, String realmlist)
         {
             StreamReader reader = null;
             StreamWriter writer = null;
             try
             {
-                var realmlistLocation = String.Format("{0}/{1}/realmlist.wtf", WoWInfo.Value.Substring(0, WoWInfo.Value.Length - 8), WoWInfo.Key);
+                var realmlistLocation = String.Format("{0}/{1}/realmlist.wtf", WoWInfo.Y.Substring(0, WoWInfo.Y.Length - 8), WoWInfo.X);
                 if (!File.Exists(realmlistLocation))
                     throw new Exception(String.Format("The realmlist file could not be found, please check the WoW directory for the chosen realm client!"));
                 reader = new StreamReader(new FileStream(realmlistLocation, FileMode.Open, FileAccess.Read));
@@ -87,7 +92,7 @@ namespace eXLauncher
                     if (line.Contains("set realmlist"))
                     {
                         if (line.Contains(String.Format("set realmlist {0}", realmlist)))
-                            StartWoWProcess(WoWInfo.Value);
+                            StartWoWProcess(WoWInfo.Y);
                     }
                 }
                 reader.Close();

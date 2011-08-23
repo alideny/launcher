@@ -14,6 +14,14 @@ namespace eXLauncher
             Z = z;
         }
 
+        public Type type
+        {
+            get
+            {
+                return typeof(T);
+            }
+        }
+
         public T X { get; set; }
         public T Y { get; set; }
         public T Z { get; set; }
