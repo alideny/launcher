@@ -94,6 +94,8 @@ namespace eXLauncher.XML
                                     realmlist = objXmlTextReader.Value;
                                     break;
                                 case "RealmClient":
+                                    client = objXmlTextReader.Value;
+                                    break;
 
                                 // Defaults
                                 case "RealmDefaultName":
@@ -116,7 +118,8 @@ namespace eXLauncher.XML
                 }
                 if (realmOptions.ContainsX(name))
                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                realmOptions.Add(name, realmlist, client);
+                if (client != "0.0.0")
+                    realmOptions.Add(name, realmlist, client);
 
                 if (wowDirectories.ContainsX(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
