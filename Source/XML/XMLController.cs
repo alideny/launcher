@@ -65,7 +65,7 @@ namespace eXLauncher.XML
                             {
                                 if (realmOptions.ContainsX(name))
                                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                                if (name != "" && client != "0.0.0")
+                                if (name != "" && Config.ValidateClient(client))
                                     realmOptions.Add(name, realmlist, client);
                                 client = "0.0.0";
                                 name = "";
@@ -75,7 +75,7 @@ namespace eXLauncher.XML
                             {
                                 if (wowDirectories.ContainsX(client))
                                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
-                                if (client != "0.0.0" && locale != "" && fileLocation != "")
+                                if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
                                     wowDirectories.Add(client, locale, fileLocation);
                                 client = "0.0.0";
                                 fileLocation = "";
@@ -117,12 +117,12 @@ namespace eXLauncher.XML
                 }
                 if (realmOptions.ContainsX(name))
                     throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                if (client != "0.0.0")
+                if (Config.ValidateClient(client))
                     realmOptions.Add(name, realmlist, client);
 
                 if (wowDirectories.ContainsX(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
-                if (client != "0.0.0" && locale != "" && fileLocation != "")
+                if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
                     wowDirectories.Add(client, locale, fileLocation);
                     
             }

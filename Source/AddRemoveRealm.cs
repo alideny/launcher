@@ -23,16 +23,23 @@ namespace eXLauncher
         void addrealm_CheckedChanged(object sender, EventArgs e)
         {
             if (!addrealm.Checked)
+            {
                 addrealm_panel.Visible = false;
+                addremovebutton.Text = "Remove Realm";
+            }
             else
+            {
                 addrealm_panel.Visible = true;
+                addremovebutton.Text = "Add Realm";
+            }
         }
 
         private void addremovebutton_Click(object sender, EventArgs e)
         {
             if (addrealm.Checked)
             {
-                master.AddToRealmOptions(name_textbox.Text, realmlist_textbox.Text, clientversion.Text);
+                if (Config.ValidateClient(clientversion.Text))
+                    master.AddToRealmOptions(name_textbox.Text, realmlist_textbox.Text, clientversion.Text);
             }
             else
             {

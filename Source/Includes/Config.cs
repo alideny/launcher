@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.IO;
 
@@ -28,6 +29,43 @@ namespace eXLauncher
         /// Value.Value: Location
         /// </summary>
         public static SArray3 wowDirectories;
+
+        /// <summary>
+        /// Make sure the client string is properly formatted
+        /// </summary>
+        /// <param name="client">Client version supplied</param>
+        /// <returns>True if the client version is correctly formatted. False if 0.0.0 or incorrectly formatted.</returns>
+        public static bool ValidateClient(String client)
+        {
+            if (client.Contains("0.0.0"))
+                return false;
+
+            // Number . Number . Number (OPTIONAL LETTER)
+            Regex r = new Regex(@"\d{1}.\d{1}.\d{1}(\w{1})?");
+            if (!r.IsMatch(client))
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Make sure the locale provided is properly formatted.
+        /// </summary>
+        /// <param name="locale">Locale value supplied</param>
+        /// <returns>True if valid locale.</returns>
+        public static bool ValidateLocale(String locale)
+        {
+            if (locale.Length != 4)
+                return false;
+
+            Regex r = new Regex(@"en\w{2}");
+            String improvedLocale = String.Format("{0}{1}{2}", locale.Substring(0, 2), Char.ToUpper(locale[2]), Char.ToUpper(locale[3]));
+
+            if (!r.IsMatch(improvedLocale))
+                return false;
+
+            return true;
+        }
     }
 
     /// <summary>
@@ -61,11 +99,9 @@ namespace eXLauncher
             bool forceAdd = false;
             try
             {
-                try { Config.wowDirectories.Remove("0.0.0"); }
-                catch (Exception) { }
                 foreach (Vector3<String> kvp in Config.wowDirectories)
                 {
-                    if (kvp.Y.Substring(0, 2) != "en")
+                    if (!Config.ValidateLocale(kvp.Y))
                         throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.X, kvp.Y));
 
                     if (!File.Exists(String.Format("{0}/{1}/realmlist.wtf", kvp.Z.Substring(0, kvp.Z.Length - 8), kvp.Y)))
@@ -90,6 +126,6 @@ namespace eXLauncher
         public void AddWoWLocation()
         {
 
-        }
+        }        
     }
 }
