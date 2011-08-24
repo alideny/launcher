@@ -60,6 +60,20 @@ namespace eXLauncher.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap addrealm_button {
+            get {
+                object obj = ResourceManager.GetObject("addrealm_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap addrealm_button_depressed {
+            get {
+                object obj = ResourceManager.GetObject("addrealm_button_depressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Launcherv2 {
             get {
                 object obj = ResourceManager.GetObject("Launcherv2", resourceCulture);

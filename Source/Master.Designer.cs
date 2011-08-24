@@ -47,6 +47,7 @@
             // 
             // chosenRealm
             // 
+            this.chosenRealm.BackColor = System.Drawing.Color.White;
             this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.realms;
             this.chosenRealm.BackgroundImageTiled = true;
             this.chosenRealm.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -56,7 +57,7 @@
             this.chosenRealm.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.chosenRealm.MultiSelect = false;
             this.chosenRealm.Name = "chosenRealm";
-            this.chosenRealm.Size = new System.Drawing.Size(127, 566);
+            this.chosenRealm.Size = new System.Drawing.Size(125, 566);
             this.chosenRealm.TabIndex = 2;
             this.chosenRealm.UseCompatibleStateImageBehavior = false;
             this.chosenRealm.View = System.Windows.Forms.View.List;
@@ -64,10 +65,14 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(162, 491);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::eXLauncher.Properties.Resources.addrealm_button;
+            this.button1.Location = new System.Drawing.Point(166, 489);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 40);
+            this.button1.Size = new System.Drawing.Size(145, 41);
             this.button1.TabIndex = 3;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

@@ -29,6 +29,10 @@ namespace eXLauncher
             vector.Create(item1, item2, item3);
             contents.Add(vector);
         }
+        public void Add(Vector3<String> vector)
+        {
+            contents.Add(vector);
+        }
         public void Remove(String value)
         {
             Vector3<String> marked = null;

@@ -66,6 +66,11 @@ namespace eXLauncher
 
             return true;
         }
+
+        /// <summary>
+        /// Default Realm selected in config
+        /// </summary>
+        public static String DefaultRealm = "";
     }
 
     /// <summary>

@@ -140,12 +140,9 @@ namespace eXLauncher.XML
                 itemToAdd.Name = kvp.X;
                 box.Items.Add(itemToAdd);
             }
-
-            ListViewItem item = box.Items[defaultRealm];
-            if (item != null)
-                item.Selected = true;
-            box.Select();
             // End Realm Options
+
+            Config.DefaultRealm = defaultRealm;
         }
 
     }

@@ -26,6 +26,16 @@ namespace eXLauncher
         public Master()
         {
             InitializeComponent();
+
+            // Add/Remove Realm Depress State
+            button1.MouseDown += new MouseEventHandler((sender, e) =>
+            {
+                button1.Image = global::eXLauncher.Properties.Resources.addrealm_button_depressed;
+            });
+            button1.MouseUp += new MouseEventHandler((sender, e) =>
+            {
+                button1.Image = global::eXLauncher.Properties.Resources.addrealm_button;
+            });
         }
 
         /// <summary>
@@ -38,6 +48,17 @@ namespace eXLauncher
             ConfigController controller = new ConfigController(this);
             controller.LoadAllValues();
             controller.ValidateWoWLocation();
+            PluginScanner scanner = new PluginScanner(this);
+            scanner.Scan();
+            UpdateRealmSelectionToDefault();
+        }
+
+        public void UpdateRealmSelectionToDefault()
+        {
+            ListViewItem item = chosenRealm.Items[Config.DefaultRealm];
+            if (item != null)
+                item.Selected = true;
+            chosenRealm.Select();
         }
 
         public void AddToRealmOptions(String name, String realmlist, String clientversion)

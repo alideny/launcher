@@ -30,6 +30,15 @@ namespace eXLauncher.XML
             m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed))); 
         }
 
+        public XMLValidator(String plugin, bool isplugin)
+        {
+            m_ConfigFileName = plugin;
+            m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Plugin.xsd");
+            m_objXmlSchemaSet = new XmlSchemaSet();
+
+            m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed)));
+        }
+
         /// <summary>
         /// Validates the XML Config File and ensures it is correct format.
         /// </summary>
