@@ -40,6 +40,16 @@ namespace eXLauncher
             controller.ValidateWoWLocation();
         }
 
+        public void AddToRealmOptions(String name, String realmlist, String clientversion)
+        {
+            Config.realmOptions.Add(name, realmlist, clientversion);
+            ListViewItem item = new ListViewItem(name);
+            item.Name = name;
+            chosenRealm.Items.Add(item);
+            chosenRealm.Items[name].Selected = true;
+            // TODO: Add to XML to make changes permanent
+        }
+
         /// <summary>
         /// Called when a player wants to start the WoW Client.
         /// </summary>
@@ -113,6 +123,17 @@ namespace eXLauncher
         {
             Process.Start(filename);
             Environment.Exit(0);
+        }
+
+        /// <summary>
+        /// Add/Remove Realm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddRemoveRealm messagebox = new AddRemoveRealm(this);
+            messagebox.Show();
         }
     }
 }

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Master));
             this.btnStartWoW = new System.Windows.Forms.Button();
             this.chosenRealm = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStartWoW
@@ -45,25 +47,37 @@
             // 
             // chosenRealm
             // 
-            this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherv2;
+            this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.realms;
             this.chosenRealm.BackgroundImageTiled = true;
             this.chosenRealm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chosenRealm.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chosenRealm.ForeColor = System.Drawing.Color.White;
             this.chosenRealm.Location = new System.Drawing.Point(29, 45);
             this.chosenRealm.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.chosenRealm.MultiSelect = false;
             this.chosenRealm.Name = "chosenRealm";
             this.chosenRealm.Size = new System.Drawing.Size(127, 566);
             this.chosenRealm.TabIndex = 2;
             this.chosenRealm.UseCompatibleStateImageBehavior = false;
             this.chosenRealm.View = System.Windows.Forms.View.List;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(162, 491);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 40);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherv3;
-            this.ClientSize = new System.Drawing.Size(802, 641);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(802, 638);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.chosenRealm);
             this.Controls.Add(this.btnStartWoW);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -79,6 +93,7 @@
 
         private System.Windows.Forms.Button btnStartWoW;
         private System.Windows.Forms.ListView chosenRealm;
+        private System.Windows.Forms.Button button1;
 
     }
 }

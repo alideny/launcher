@@ -75,7 +75,7 @@ namespace eXLauncher.XML
                             {
                                 if (wowDirectories.ContainsX(client))
                                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
-                                if (client != "0.0.0")
+                                if (client != "0.0.0" && locale != "" && fileLocation != "")
                                     wowDirectories.Add(client, locale, fileLocation);
                                 client = "0.0.0";
                                 fileLocation = "";
@@ -122,7 +122,8 @@ namespace eXLauncher.XML
 
                 if (wowDirectories.ContainsX(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
-                wowDirectories.Add(client, locale, fileLocation);
+                if (client != "0.0.0" && locale != "" && fileLocation != "")
+                    wowDirectories.Add(client, locale, fileLocation);
                     
             }
             catch (Exception ex)
@@ -134,9 +135,15 @@ namespace eXLauncher.XML
             // Realm Options
             ListView box = (ListView)m_masterForm.Controls["chosenRealm"];
             foreach (Vector3<String> kvp in realmOptions)
-                box.Items.Add(new ListViewItem(kvp.X));
+            {
+                ListViewItem itemToAdd = new ListViewItem(kvp.X);
+                itemToAdd.Name = kvp.X;
+                box.Items.Add(itemToAdd);
+            }
 
-            box.Items[defaultRealm].Selected = true;
+            ListViewItem item = box.Items[defaultRealm];
+            if (item != null)
+                item.Selected = true;
             box.Select();
             // End Realm Options
         }

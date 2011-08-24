@@ -16,6 +16,13 @@ namespace eXLauncher
             contents = new ArrayList();
         }
 
+        public SArray3(SArray3 previous)
+        {
+            contents = new ArrayList();
+            foreach (Vector3<String> vector in previous)
+                this.Add(vector.X, vector.Y, vector.Z);
+        }
+
         public void Add(String item1, String item2, String item3)
         {
             Vector3<String> vector = new Vector3<String>();

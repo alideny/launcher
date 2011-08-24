@@ -49,8 +49,8 @@ namespace eXLauncher
         {
             loader = new XMLController(_masterForm);
             loader.LoadFromConfig();
-            Config.realmOptions = loader.realmOptions;
-            Config.wowDirectories = loader.wowDirectories;
+            Config.realmOptions = new SArray3(loader.realmOptions);
+            Config.wowDirectories = new SArray3(loader.wowDirectories);
         }
 
         /// <summary>
