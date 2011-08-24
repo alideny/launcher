@@ -60,16 +60,16 @@ namespace eXLauncher.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap Launcherx2 {
+        internal static System.Drawing.Bitmap Launcherv2 {
             get {
-                object obj = ResourceManager.GetObject("Launcherx2", resourceCulture);
+                object obj = ResourceManager.GetObject("Launcherv2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap Launcherx2_realms {
+        internal static System.Drawing.Bitmap Launcherv3 {
             get {
-                object obj = ResourceManager.GetObject("Launcherx2_realms", resourceCulture);
+                object obj = ResourceManager.GetObject("Launcherv3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

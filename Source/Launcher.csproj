@@ -66,7 +66,6 @@
   <ItemGroup>
     <Compile Include="Includes\SArray3.cs" />
     <Compile Include="Includes\Config.cs">
-
     </Compile>
     <Compile Include="Includes\Vector3.cs" />
     <Compile Include="Master.cs">
@@ -109,8 +108,11 @@
     <Content Include="Includes\Config.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Resources\Launcherx2_realms.png" />
-    <None Include="Resources\Launcherx2.png" />
+    <None Include="Resources\Launcherv21.png" />
+    <None Include="Resources\Launcherv31.png" />
+    <None Include="Resources\Launcherv2_realms.png" />
+    <None Include="Resources\Launcherv2.png" />
+    <None Include="Resources\Launcherv3.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

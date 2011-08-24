@@ -45,12 +45,15 @@
             // 
             // chosenRealm
             // 
-            this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherx2_realms;
+            this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherv2;
+            this.chosenRealm.BackgroundImageTiled = true;
             this.chosenRealm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chosenRealm.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chosenRealm.ForeColor = System.Drawing.Color.White;
-            this.chosenRealm.Location = new System.Drawing.Point(29, 49);
+            this.chosenRealm.Location = new System.Drawing.Point(29, 45);
+            this.chosenRealm.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.chosenRealm.Name = "chosenRealm";
-            this.chosenRealm.Size = new System.Drawing.Size(123, 566);
+            this.chosenRealm.Size = new System.Drawing.Size(127, 566);
             this.chosenRealm.TabIndex = 2;
             this.chosenRealm.UseCompatibleStateImageBehavior = false;
             this.chosenRealm.View = System.Windows.Forms.View.List;
@@ -59,14 +62,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherx2;
+            this.BackgroundImage = global::eXLauncher.Properties.Resources.Launcherv3;
             this.ClientSize = new System.Drawing.Size(802, 641);
             this.Controls.Add(this.chosenRealm);
             this.Controls.Add(this.btnStartWoW);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Master";
-            this.Text = "eXLauncher";
+            this.Text = "Launcher";
             this.Load += new System.EventHandler(this.Master_Load);
             this.ResumeLayout(false);
 
