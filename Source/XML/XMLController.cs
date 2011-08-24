@@ -6,7 +6,6 @@ using System.Xml;
 using System.Windows.Forms;
 
 using eXLauncher;
-using eXLauncher.Includes;
 
 namespace eXLauncher.XML
 {

@@ -11,7 +11,7 @@
         <RealmClient>3.3.5a</RealmClient>
     </Realm>
     <Defaults>
-        <RealmDefaultId>KataWoW</RealmDefaultId>
+        <RealmDefaultName>KataWoW</RealmDefaultName>
     </Defaults>
 </Config>
 

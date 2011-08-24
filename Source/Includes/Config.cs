@@ -9,7 +9,7 @@ using System.IO;
 using eXLauncher;
 using eXLauncher.XML;
 
-namespace eXLauncher.Includes
+namespace eXLauncher
 {
     public static class Config
     {
@@ -86,6 +86,7 @@ namespace eXLauncher.Includes
             }
         }
 
+        // TODO: Implement loading a messagebox allowing a user to add info.
         public void AddWoWLocation()
         {
 

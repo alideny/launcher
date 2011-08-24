@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.IO;
 
 using eXLauncher.XML;
-using eXLauncher.Includes;
 
 namespace eXLauncher
 {

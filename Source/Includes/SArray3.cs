@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eXLauncher.Includes
+namespace eXLauncher
 {
     public class SArray3 : IEnumerable
     {

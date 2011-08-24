@@ -15,7 +15,7 @@
                 <xs:element maxOccurs="1" name="Defaults">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="RealmDefaultId" type="xs:int" />
+                            <xs:element name="RealmDefaultName" type="xs:string" />
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
