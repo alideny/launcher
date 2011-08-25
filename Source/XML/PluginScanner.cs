@@ -16,6 +16,9 @@ namespace eXLauncher.XML
             m_masterForm = form;
         }
 
+        /// <summary>
+        /// Scan the Plugins Directory for any plugins, validate them, and add them to the program.
+        /// </summary>
         public void Scan()
         {
             if (!Directory.Exists("./Plugins/"))
