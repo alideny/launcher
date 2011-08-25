@@ -64,20 +64,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddRemoveRealm.cs">
+    <Compile Include="AddWoWFolder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRemoveRealm.Designer.cs">
+    <Compile Include="AddWoWFolder.Designer.cs">
+      <DependentUpon>AddWoWFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddRemoveRealm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddRemoveRealm.Designer.cs">
       <DependentUpon>AddRemoveRealm.cs</DependentUpon>
     </Compile>
     <Compile Include="Includes\SArray3.cs" />
     <Compile Include="Includes\Config.cs">
     </Compile>
     <Compile Include="Includes\Vector3.cs" />
-    <Compile Include="Master.cs">
+    <Compile Include="Forms\Master.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Master.Designer.cs">
+    <Compile Include="Forms\Master.Designer.cs">
       <DependentUpon>Master.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -85,10 +91,13 @@
     <Compile Include="XML\PluginScanner.cs" />
     <Compile Include="XML\XMLController.cs" />
     <Compile Include="XML\XMLValidator.cs" />
-    <EmbeddedResource Include="AddRemoveRealm.resx">
+    <EmbeddedResource Include="AddWoWFolder.resx">
+      <DependentUpon>AddWoWFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddRemoveRealm.resx">
       <DependentUpon>AddRemoveRealm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Master.resx">
+    <EmbeddedResource Include="Forms\Master.resx">
       <DependentUpon>Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -104,6 +113,9 @@
     <EmbeddedResource Include="Includes\Config.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Includes\Plugin.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -127,10 +127,17 @@ namespace eXLauncher
             }
         }
 
-        // TODO: Implement loading a messagebox allowing a user to add info.
+        public void AddWoWFolder(String client, String locale, String fileLocation)
+        {
+            if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
+                Config.wowDirectories.Add(client, locale, fileLocation);
+        }
+
+
         public void AddWoWLocation()
         {
-
+            AddWoWFolder add = new AddWoWFolder(this);
+            add.ShowDialog();
         }        
     }
 }
