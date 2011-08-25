@@ -143,7 +143,7 @@ namespace eXLauncher
         public void AddWoWLocation()
         {
             AddWoWFolder add = new AddWoWFolder(this);
-   //         add.ShowDialog();
+            add.ShowDialog();
         }        
     }
 }
