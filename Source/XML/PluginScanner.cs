@@ -18,6 +18,8 @@ namespace eXLauncher.XML
 
         public void Scan()
         {
+            if (!Directory.Exists("./Plugins/"))
+                Directory.CreateDirectory("./Plugins/");
             String[] files = Directory.GetFiles("./Plugins/", "*.xml");
             foreach (String sFile in files)
             {
