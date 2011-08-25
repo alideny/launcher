@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
-    <Realm>
-        <RealmName>KataWoW</RealmName>
-        <RealmList>logon.katawow.org</RealmList>
-        <RealmClient>3.3.5a</RealmClient>
-    </Realm>
-    <Realm>
-        <RealmName>KataWoW - WCell</RealmName>
-        <RealmList>wcell.katawow.org</RealmList>
-        <RealmClient>3.3.5a</RealmClient>
-    </Realm>
     <Defaults>
         <RealmDefaultName>KataWoW</RealmDefaultName>
     </Defaults>

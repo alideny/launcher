@@ -48,8 +48,8 @@ namespace eXLauncher
             ConfigController controller = new ConfigController(this);
             controller.LoadAllValues();
             controller.ValidateWoWLocation();
-            PluginScanner scanner = new PluginScanner(this);
-            scanner.Scan();
+            PluginHandler scanner = new PluginHandler(this);
+            scanner.ScanPlugins();
             UpdateRealmSelectionToDefault();
         }
 
@@ -63,12 +63,19 @@ namespace eXLauncher
 
         public void AddToRealmOptions(String name, String realmlist, String clientversion)
         {
-            Config.realmOptions.Add(name, realmlist, clientversion);
+            Vector3<String> info = new Vector3<string>();
+            info.Create(name, realmlist, clientversion);
+
+            Config.realmOptions.Add(info);
+
             ListViewItem item = new ListViewItem(name);
             item.Name = name;
             chosenRealm.Items.Add(item);
             chosenRealm.Items[name].Selected = true;
-            // TODO: Add to XML to make changes permanent
+
+            PluginHandler handler = new PluginHandler(this);
+            if (!handler.WriteNewPlugin(name, PluginType.Plugin, info))
+                throw new NotImplementedException();
         }
 
         /// <summary>

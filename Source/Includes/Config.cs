@@ -127,6 +127,12 @@ namespace eXLauncher
             }
         }
 
+        /// <summary>
+        /// Add a WoW Folder to the core.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="locale"></param>
+        /// <param name="fileLocation"></param>
         public void AddWoWFolder(String client, String locale, String fileLocation)
         {
             if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
@@ -137,7 +143,7 @@ namespace eXLauncher
         public void AddWoWLocation()
         {
             AddWoWFolder add = new AddWoWFolder(this);
-            add.ShowDialog();
+   //         add.ShowDialog();
         }        
     }
 }

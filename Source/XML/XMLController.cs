@@ -49,28 +49,15 @@ namespace eXLauncher.XML
             {
                 XmlTextReader objXmlTextReader = new XmlTextReader("Config.XML");
                 String element = "";
-                // Start Variables for Realms
-                String name = "", realmlist = "";
-                // End Variables for Realms
-                // Start Variables for WoWDirectories
+
                 String fileLocation = "", client = "0.0.0", locale = "";
-                // End Variables for WoWDirectories
+
                 while (objXmlTextReader.Read())
                 {
                     switch (objXmlTextReader.NodeType)
                     {
                         case XmlNodeType.Element:
                             element = objXmlTextReader.Name;
-                            if (String.Compare(element, "Realm") == 0)
-                            {
-                                if (realmOptions.ContainsX(name))
-                                    throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                                if (name != "" && Config.ValidateClient(client))
-                                    realmOptions.Add(name, realmlist, client);
-                                client = "0.0.0";
-                                name = "";
-                                realmlist = "";
-                            }
                             if (String.Compare(element, "WoWDirectory") == 0)
                             {
                                 if (wowDirectories.ContainsX(client))
@@ -85,17 +72,6 @@ namespace eXLauncher.XML
                         case XmlNodeType.Text:
                             switch (element)
                             {
-                                // Realms
-                                case "RealmName":
-                                    name = objXmlTextReader.Value;
-                                    break;
-                                case "RealmList":
-                                    realmlist = objXmlTextReader.Value;
-                                    break;
-                                case "RealmClient":
-                                    client = objXmlTextReader.Value;
-                                    break;
-
                                 // Defaults
                                 case "RealmDefaultName":
                                     defaultRealm = objXmlTextReader.Value;
@@ -115,11 +91,6 @@ namespace eXLauncher.XML
                             break;
                     }
                 }
-                if (realmOptions.ContainsX(name))
-                    throw new Exception(String.Format("Realm id {0} used more than once!", name));
-                if (Config.ValidateClient(client))
-                    realmOptions.Add(name, realmlist, client);
-
                 if (wowDirectories.ContainsX(client))
                     throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
                 if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
