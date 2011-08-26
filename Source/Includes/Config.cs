@@ -78,7 +78,7 @@ namespace eXLauncher
     /// </summary>
     public class ConfigController
     {
-        private Form _masterForm;
+        private Master _masterForm;
         private XMLController loader;
         public ConfigController(Master form)
         {
@@ -136,7 +136,15 @@ namespace eXLauncher
         public void AddWoWFolder(String client, String locale, String fileLocation)
         {
             if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
-                Config.wowDirectories.Add(client, locale, fileLocation);
+            {
+                Vector3<String> vector = new Vector3<String>();
+                vector.Create(client, locale, fileLocation);
+                Config.wowDirectories.Add(vector);
+                
+                String name = Regex.Replace(client, @".", "-");
+                PluginHandler handler = new PluginHandler(_masterForm);
+                handler.WriteNewPlugin(name, PluginType.WoWFolder, vector);
+            }                
         }
 
 

@@ -120,6 +120,23 @@ namespace eXLauncher.XML
                         document.Save(String.Format("./Plugins/{0}.xml", name));
                         break;
                     }
+
+                case PluginType.WoWFolder:
+                    {
+                        if (File.Exists(String.Format("./WoW Folders/{0}.xml", name)))
+                            return false;
+                        document.Add(
+                            new XElement("Folder",
+                                new XElement("WoWDirectory",
+                                    new XElement("Client", content.X),
+                                    new XElement("FileLocation", content.Z),
+                                    new XElement("Locale", content.Y)
+                                )
+                            )
+                        );
+                        document.Save(String.Format("./WoW Folders/{0}.xml", name));
+                        break;
+                    }
             }
 
             return true;
