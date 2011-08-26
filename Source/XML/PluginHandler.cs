@@ -99,6 +99,74 @@ namespace eXLauncher.XML
             }
         }
 
+        /// <summary>
+        /// Scan the WoW Folders Directory for any folder plugins, validate them, and add them to the program.
+        /// </summary>
+        public void ScanDirectories()
+        {
+            if (!Directory.Exists("./WoW Folders/"))
+                Directory.CreateDirectory("./WoW Folders/");
+
+            String[] files = Directory.GetFiles("./WoW Folders/", "*.xml");
+            foreach (String file in files)
+            {
+                XMLValidator validator = new XMLValidator(file, iswowfolder: true);
+                if (validator.ValidateXMLFile())
+                {
+                    MessageBox.Show(String.Format("Plugin {0} is in an invalid format! Possibly out of date?", file));
+                    continue;
+                }
+                XmlTextReader reader = new XmlTextReader(file);
+                String element = "";
+                String locale = "", client = "", fileLocation = "";
+                while (reader.Read())
+                {
+                    switch (reader.NodeType)
+                    {
+                        case XmlNodeType.Element:
+                            {
+                                element = reader.Name;
+                                if (String.Compare(element, "WoWDirectory") == 0)
+                                {
+                                    client = "0.0.0";
+                                    fileLocation = "";
+                                    locale = "";
+                                }
+                                break;
+                            }
+                        case XmlNodeType.Text:
+                            {
+                                switch (element)
+                                {
+                                    case "Client":
+                                        client = reader.Value;
+                                        break;
+                                    case "FileLocation":
+                                        fileLocation = reader.Value;
+                                        break;
+                                    case "Locale":
+                                        locale = reader.Value;
+                                        break;
+                                }
+                                break;
+                            }
+                    }
+                }
+
+                if (Config.wowDirectories.ContainsX(client))
+                    throw new Exception(String.Format("You cannot have multiple WoW.exe files for the same client {0}!", client));
+                if (Config.ValidateClient(client) && Config.ValidateLocale(locale) && fileLocation != "")
+                    Config.wowDirectories.Add(client, locale, fileLocation);
+            }
+        }
+
+        /// <summary>
+        /// Write a new plugin
+        /// </summary>
+        /// <param name="name">Name of the plugin ({0}.xml)</param>
+        /// <param name="type">Type of Plugin</param>
+        /// <param name="content">Vector3 containing all necessary information</param>
+        /// <returns>True if successful</returns>
         public bool WriteNewPlugin(String name, PluginType type, Vector3<String> content)
         {
             XDocument document = new XDocument(new XDeclaration("1.0", "utf-16", "yes"));

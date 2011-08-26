@@ -92,8 +92,8 @@ namespace eXLauncher
         {
             loader = new XMLController(_masterForm);
             loader.LoadFromConfig();
-            Config.realmOptions = new SArray3(loader.realmOptions);
-            Config.wowDirectories = new SArray3(loader.wowDirectories);
+            Config.realmOptions = new SArray3();
+            Config.wowDirectories = new SArray3();
         }
 
         /// <summary>
@@ -140,8 +140,9 @@ namespace eXLauncher
                 Vector3<String> vector = new Vector3<String>();
                 vector.Create(client, locale, fileLocation);
                 Config.wowDirectories.Add(vector);
-                
-                String name = Regex.Replace(client, @".", "-");
+
+                String name = client.Replace('.', '-');
+                MessageBox.Show(name);
                 PluginHandler handler = new PluginHandler(_masterForm);
                 handler.WriteNewPlugin(name, PluginType.WoWFolder, vector);
             }                

@@ -18,22 +18,20 @@ namespace eXLauncher.XML
         private bool m_bIsFailure = false;
 
         /// <summary>
-        /// Set up the XML Validator class.
+        /// Set up the XML Validator class
         /// </summary>
-        /// <param name="configFileName">Location of the Config File</param>
-        public XMLValidator(string configFileName)
-        { 
-            m_ConfigFileName = configFileName;
-            m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Config.xsd");
-            m_objXmlSchemaSet = new XmlSchemaSet();
-
-            m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed))); 
-        }
-
-        public XMLValidator(String plugin, bool isplugin)
+        /// <param name="plugin">Name of the Config/Plugin</param>
+        /// <param name="isplugin">If the file is a plugin</param>
+        /// <param name="iswowfolder">If the file is a WoW Directory Plugin</param>
+        public XMLValidator(String plugin, bool isplugin = false, bool iswowfolder = false)
         {
             m_ConfigFileName = plugin;
-            m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Plugin.xsd");
+            if (isplugin)
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Plugin.xsd");
+            else if (iswowfolder)
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.FolderPlugin.xsd");
+            else
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Config.xsd");
             m_objXmlSchemaSet = new XmlSchemaSet();
 
             m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed)));

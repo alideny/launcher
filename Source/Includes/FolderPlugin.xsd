@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FolderPlugin" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Plugin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" name="WoWDirectory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Client" type="xs:string" />
+              <xs:element name="FileLocation" type="xs:string" />
+              <xs:element name="Locale" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

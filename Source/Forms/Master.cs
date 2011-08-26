@@ -47,9 +47,12 @@ namespace eXLauncher
         {
             ConfigController controller = new ConfigController(this);
             controller.LoadAllValues();
-            controller.ValidateWoWLocation();
+
             PluginHandler scanner = new PluginHandler(this);
             scanner.ScanPlugins();
+            scanner.ScanDirectories();
+
+            controller.ValidateWoWLocation();
             UpdateRealmSelectionToDefault();
         }
 
