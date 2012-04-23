@@ -1,4 +1,4 @@
-﻿namespace eXLauncher
+﻿namespace launcher
 {
     partial class AddWoWFolder
     {
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::eXLauncher.Properties.Resources.messagebox;
+            this.BackgroundImage = global::launcher.Properties.Resources.messagebox;
             this.ClientSize = new System.Drawing.Size(472, 320);
             this.Controls.Add(this.addbutton);
             this.Controls.Add(this.button1);

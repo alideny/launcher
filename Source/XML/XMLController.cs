@@ -5,9 +5,9 @@ using System.Text;
 using System.Xml;
 using System.Windows.Forms;
 
-using eXLauncher;
+using launcher;
 
-namespace eXLauncher.XML
+namespace launcher.XML
 {
     /// <summary>
     /// Handles all communications between the program and XML files.

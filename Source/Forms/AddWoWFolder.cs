@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace eXLauncher
+namespace launcher
 {
     public partial class AddWoWFolder : Form
     {

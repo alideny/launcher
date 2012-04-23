@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace eXLauncher.XML
+namespace launcher.XML
 {
     public enum PluginType
     {
@@ -104,10 +104,10 @@ namespace eXLauncher.XML
         /// </summary>
         public void ScanDirectories()
         {
-            if (!Directory.Exists("./WoW Folders/"))
-                Directory.CreateDirectory("./WoW Folders/");
+            if (!Directory.Exists("./ClientPlugins/"))
+                Directory.CreateDirectory("./ClientPlugins/");
 
-            String[] files = Directory.GetFiles("./WoW Folders/", "*.xml");
+            String[] files = Directory.GetFiles("./ClientPlugins/", "*.xml");
             foreach (String file in files)
             {
                 XMLValidator validator = new XMLValidator(file, iswowfolder: true);
@@ -191,7 +191,7 @@ namespace eXLauncher.XML
 
                 case PluginType.WoWFolder:
                     {
-                        if (File.Exists(String.Format("./WoW Folders/{0}.xml", name)))
+                        if (File.Exists(String.Format("./ClientPlugins/{0}.xml", name)))
                             return false;
                         document.Add(
                             new XElement("Folder",
@@ -202,7 +202,7 @@ namespace eXLauncher.XML
                                 )
                             )
                         );
-                        document.Save(String.Format("./WoW Folders/{0}.xml", name));
+                        document.Save(String.Format("./ClientPlugins/{0}.xml", name));
                         break;
                     }
             }

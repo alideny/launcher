@@ -1,4 +1,4 @@
-﻿namespace eXLauncher
+﻿namespace launcher
 {
     partial class Master
     {
@@ -48,7 +48,7 @@
             // chosenRealm
             // 
             this.chosenRealm.BackColor = System.Drawing.Color.White;
-            this.chosenRealm.BackgroundImage = global::eXLauncher.Properties.Resources.realms;
+            this.chosenRealm.BackgroundImage = global::launcher.Properties.Resources.realms;
             this.chosenRealm.BackgroundImageTiled = true;
             this.chosenRealm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chosenRealm.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,7 +67,7 @@
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::eXLauncher.Properties.Resources.addrealm_button;
+            this.button1.Image = global::launcher.Properties.Resources.addrealm_button;
             this.button1.Location = new System.Drawing.Point(166, 489);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 41);

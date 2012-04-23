@@ -1,4 +1,4 @@
-﻿namespace eXLauncher
+﻿namespace launcher
 {
     partial class AddRemoveRealm
     {
@@ -132,10 +132,7 @@
             // clientversion
             // 
             this.clientversion.FormattingEnabled = true;
-            this.clientversion.Items.AddRange(new object[] {
-            "2.4.3",
-            "3.3.5a",
-            "4.2.0"});
+            this.clientversion.Items.AddRange(Config.PrintClientVersions());
             this.clientversion.Location = new System.Drawing.Point(110, 70);
             this.clientversion.Name = "clientversion";
             this.clientversion.Size = new System.Drawing.Size(145, 24);
@@ -157,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::eXLauncher.Properties.Resources.messagebox;
+            this.BackgroundImage = global::launcher.Properties.Resources.messagebox;
             this.ClientSize = new System.Drawing.Size(474, 321);
             this.Controls.Add(this.addremovebutton);
             this.Controls.Add(this.addrealm_panel);

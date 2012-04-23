@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 
-namespace eXLauncher.XML
+namespace launcher.XML
 {
     /// <summary>
     /// Validates the XML file.
@@ -27,11 +27,11 @@ namespace eXLauncher.XML
         {
             m_ConfigFileName = plugin;
             if (isplugin)
-                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Plugin.xsd");
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("launcher.Includes.Plugin.xsd");
             else if (iswowfolder)
-                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.FolderPlugin.xsd");
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("launcher.Includes.FolderPlugin.xsd");
             else
-                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eXLauncher.Includes.Config.xsd");
+                m_ConfigSchemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("launcher.Includes.Config.xsd");
             m_objXmlSchemaSet = new XmlSchemaSet();
 
             m_objXmlSchemaSet.Add(XmlSchema.Read(m_ConfigSchemaStream, new ValidationEventHandler(ValidationFailed)));

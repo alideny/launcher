@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace eXLauncher
+namespace launcher
 {
     public class Vector3<T>
     {

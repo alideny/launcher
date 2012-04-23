@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.IO;
 
-using eXLauncher;
-using eXLauncher.XML;
+using launcher;
+using launcher.XML;
 
-namespace eXLauncher
+namespace launcher
 {
     public static class Config
     {
@@ -65,6 +65,20 @@ namespace eXLauncher
                 return false;
 
             return true;
+        }
+
+        public static object[] PrintClientVersions()
+        {
+            if (wowDirectories.Count < 1)
+                return null;
+
+            object[] returnObject = new object[wowDirectories.Count];
+            int count = 0;
+            foreach (Vector3<String> plugin in wowDirectories)
+            {
+                returnObject[count++] = plugin.X;
+            }
+            return returnObject;
         }
 
         /// <summary>
@@ -142,7 +156,6 @@ namespace eXLauncher
                 Config.wowDirectories.Add(vector);
 
                 String name = client.Replace('.', '-');
-                MessageBox.Show(name);
                 PluginHandler handler = new PluginHandler(_masterForm);
                 handler.WriteNewPlugin(name, PluginType.WoWFolder, vector);
             }                

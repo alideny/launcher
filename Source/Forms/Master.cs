@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 using System.IO;
 
-using eXLauncher.XML;
+using launcher.XML;
 
-namespace eXLauncher
+namespace launcher
 {
     /// <summary>
     /// Main thread for the master launcher form.
@@ -30,11 +30,11 @@ namespace eXLauncher
             // Add/Remove Realm Depress State
             button1.MouseDown += new MouseEventHandler((sender, e) =>
             {
-                button1.Image = global::eXLauncher.Properties.Resources.addrealm_button_depressed;
+                button1.Image = global::launcher.Properties.Resources.addrealm_button_depressed;
             });
             button1.MouseUp += new MouseEventHandler((sender, e) =>
             {
-                button1.Image = global::eXLauncher.Properties.Resources.addrealm_button;
+                button1.Image = global::launcher.Properties.Resources.addrealm_button;
             });
         }
 
