@@ -109,8 +109,8 @@ namespace eXLauncher
                     if (!Config.ValidateLocale(kvp.Y))
                         throw new Exception(String.Format("WoW Client ID: {0} has invalid locale {1}, Please fix it before starting the launcher again1", kvp.X, kvp.Y));
 
-                    if (!File.Exists(String.Format("{0}/{1}/realmlist.wtf", kvp.Z.Substring(0, kvp.Z.Length - 8), kvp.Y)))
-                        throw new Exception(String.Format("WoW Client ID: {0} has invalid WoW.exe file directory. The realmlist file could not be found!", kvp.X));
+                    if (!File.Exists(String.Format("{0}/Data/{1}/realmlist.wtf", kvp.Z.Substring(0, kvp.Z.Length - 8), kvp.Y)))
+                        throw new Exception(String.Format("WoW Client ID: {0} has invalid WoW.exe file directory ({1}). The realmlist file could not be found!", kvp.X, kvp.Z));
                 }
 
                 if (Config.wowDirectories.Count < 1)

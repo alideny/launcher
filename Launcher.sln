@@ -1,8 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Source\Launcher.csproj", "{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{03DBF116-49EF-41B1-8F74-ACEBDB8480C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,8 +12,6 @@ Global
 		{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}.Debug|x86.Build.0 = Debug|x86
 		{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}.Release|x86.ActiveCfg = Release|x86
 		{7E1A1E54-0FC5-43DA-9DA5-6836028A812E}.Release|x86.Build.0 = Release|x86
-		{03DBF116-49EF-41B1-8F74-ACEBDB8480C5}.Debug|x86.ActiveCfg = Debug
-		{03DBF116-49EF-41B1-8F74-ACEBDB8480C5}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
